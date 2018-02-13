@@ -12,28 +12,28 @@ namespace Legendary_Student_API.Controllers
     [RoutePrefix("api/Dashboard")]
     public class DashboardController : ApiController
     {
-        [Route("GetDashboardDetails")]
+        [Route("GetDashboardDetails/{User}")]
         [AcceptVerbs("GET", "POST", "PUT", "DELETE")]
         public IHttpActionResult GetDashboardDetails(string User)
         {
             return Ok(new DashboardModel());
         }
 
-        [Route("GetAllStudents")]
+        [Route("GetAllStudents/{User}")]
         [AcceptVerbs("GET", "POST", "PUT", "DELETE")]
         public IHttpActionResult GetAllStudents(string User)
         {
             return Ok(new List<StudentRegistrationModel>());
         }
 
-        [Route("GetAllSchools")]
+        [Route("GetAllSchools/{User}")]
         [AcceptVerbs("GET", "POST", "PUT", "DELETE")]
         public IHttpActionResult GetAllSchools(string User)
         {
             return Ok(new List<SchoolRegistrationModel>());
         }
 
-        [Route("NewExamDetails")]
+        [Route("NewExamDetails/{User}")]
         [AcceptVerbs("GET", "POST", "PUT", "DELETE")]
         public IHttpActionResult NewExamDetails(string User)
         {

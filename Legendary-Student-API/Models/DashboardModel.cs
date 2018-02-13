@@ -5,6 +5,13 @@ namespace Legendary_Student_API.Models
 {
     public class DashboardModel
     {
+        public DashboardModel()
+        {
+            Schools = new List<SchoolRegistrationModel>();
+            Students = new List<StudentRegistrationModel>();
+            TopStudents = new List<StudentRegistrationModel>();
+            NewTest = new List<NewTestModel>();
+        }
         public List<SchoolRegistrationModel> Schools { get; set; }
         public List<StudentRegistrationModel> Students { get; set; }
         public List<StudentRegistrationModel> TopStudents { get; set; }
