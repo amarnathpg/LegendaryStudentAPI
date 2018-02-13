@@ -12,8 +12,6 @@ namespace Legendary_Student_API.Controllers
     [RoutePrefix("api/Orders")]
     public class OrdersController : ApiController
     {
-        //[RequireHttps]
-        [Authorize]
         [Route("")]
         [AcceptVerbs("GET", "POST")]
         public IHttpActionResult Get()

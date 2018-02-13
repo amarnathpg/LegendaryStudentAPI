@@ -10,7 +10,7 @@ using System.Web.Http;
 
 namespace Legendary_Student_API.Controllers
 {
-    [RoutePrefix("Account")]
+    [RoutePrefix("api/Account")]
     public class AccountController : ApiController
     {
         private AuthRepository _repo = null;
@@ -44,7 +44,7 @@ namespace Legendary_Student_API.Controllers
         [AllowAnonymous]
         [Route("Login")]
         [HttpGet]
-        public async Task<IHttpActionResult> Login()
+        public async Task<IHttpActionResult> Login(string username, string password)
         {
             //if (!ModelState.IsValid)
             //{

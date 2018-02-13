@@ -7,12 +7,13 @@ using System.Web.Http;
 
 namespace Legendary_Student_API.Controllers
 {
+
     public class ValuesController : ApiController
     {
         // GET api/values
         public IEnumerable<string> Get()
         {
-            return new string[] { "value1", "valu" };
+            return new string[] { "value1", "va" };
         }
 
         // GET api/values/5
