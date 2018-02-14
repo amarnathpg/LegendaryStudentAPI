@@ -1,16 +1,22 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
 namespace Legendary_Student_API.Models
 {
-    public class SchoolRegistrationModel
+    [Table("tblSchoolMaster")]
+    public class School
     {
+        [Key]
+        [Column(Order = 1)]
         public int ID { get; set; }
 
         [Required]
+        [ConcurrencyCheck]
+        [Column("Name", Order = 2)]
         public string Name { get; set; }
         
         public string Code { get; set; }
@@ -19,19 +25,10 @@ namespace Legendary_Student_API.Models
         public int MobileNumber { get; set; }
 
         [Required]
-        public string Address { get; set; }
-
-        [Required]
-        public string City { get; set; }
-
-        [Required]
-        public string State { get; set; }
-
-        [Required]
-        public string Country { get; set; }
-
-        [Required]
-        public int PostalCode { get; set; }
+        [ForeignKey("Address")]
+        [Column(Order = 3)]
+        public int AddressID { get; set; }
+        public virtual Address Address { get; set; }
 
         [Required]
         [StringLength(100, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 6)]
@@ -44,6 +41,11 @@ namespace Legendary_Student_API.Models
 
         [Required]
         public DateTime CreatedDateTime { get; set; }
+
+        public ICollection<Class> Class { get; set; }
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
 
     }
 }

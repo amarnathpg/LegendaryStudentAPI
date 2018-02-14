@@ -1,4 +1,4 @@
-﻿using Legendary_Student_API.Models.TestModels;
+﻿using Legendary_Student_API.Models.Test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,9 +14,9 @@ namespace Legendary_Student_API.Controllers
         public IHttpActionResult GetExamDetails([FromUri]string User, [FromUri]TestType Type)
         {
             if (Type == TestType.MockTest)
-                return Ok(new MockTestModel());
+                return Ok(new MockTest());
             else
-                return Ok(new OnlineTestModel());
+                return Ok(new OnlineTest());
         }
 
         [Route("PostExamData/{User}")]

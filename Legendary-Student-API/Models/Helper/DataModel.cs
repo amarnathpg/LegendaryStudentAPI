@@ -4,7 +4,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 
-namespace Legendary_Student_API.Models.HelperModels
+namespace Legendary_Student_API.Models.Helper
 {
     public class DataModel
     {

@@ -6,7 +6,7 @@ using System.Web;
 
 namespace Legendary_Student_API.Models
 {
-    public class ForgotPasswordModel
+    public class ForgotPassword
     {
         [Required]
         public string Email { get; set; }

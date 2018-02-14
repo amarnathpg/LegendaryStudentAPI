@@ -16,7 +16,7 @@ namespace Legendary_Student_API.Controllers
         [AcceptVerbs("GET", "POST")]
         public IHttpActionResult Get()
         {
-            return Ok(OrderModel.CreateOrders());
+            return Ok(Order.CreateOrders());
         }
     }
 }

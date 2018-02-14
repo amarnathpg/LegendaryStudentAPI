@@ -1,5 +1,5 @@
 ﻿using Legendary_Student_API.Models;
-using Legendary_Student_API.Models.TestModels;
+using Legendary_Student_API.Models.Test;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -16,28 +16,55 @@ namespace Legendary_Student_API.Controllers
         [AcceptVerbs("GET", "POST", "PUT", "DELETE")]
         public IHttpActionResult GetDashboardDetails(string User)
         {
-            return Ok(new DashboardModel());
+            return Ok(new Dashboard());
         }
 
         [Route("GetAllStudents/{User}")]
         [AcceptVerbs("GET", "POST", "PUT", "DELETE")]
         public IHttpActionResult GetAllStudents(string User)
         {
-            return Ok(new List<StudentRegistrationModel>());
+            //using (var db = new StudentContext())
+            //{
+            //    var blog = new Student()
+            //    {
+            //        CreatedDateTime = DateTime.Now,
+            //        Email = "dfdfd@gmil.com",
+            //        FatherName = "dfd",
+            //        LastName = "dfdf",
+            //        MobileNumber = "23232",
+            //        Password = "dfdsdf",
+            //        School = new School()
+            //        {
+            //            Address = new Address() { AddressValue = "sd", City = "sd", Country = "sd", PostalCode = "sd", State = "sd" },
+            //            Code = "",
+            //            CreatedDateTime = DateTime.Now,
+            //            Email = "sda@gmail.com",
+            //            MobileNumber = 2334,
+            //            Name = "sda",
+            //            Password = "dfdsdf"
+            //        },
+            //        Class = new Class() { ClassNumber = 2 },
+            //        FirstName = "df",
+            //        Address = new Address() { AddressValue = "sd", City = "sd", Country = "sd", PostalCode = "sd", State = "sd" }
+            //    };
+            //    db.Students.Add(blog);
+            //    db.SaveChanges();
+            //}
+            return Ok(new List<Student>());
         }
 
         [Route("GetAllSchools/{User}")]
         [AcceptVerbs("GET", "POST", "PUT", "DELETE")]
         public IHttpActionResult GetAllSchools(string User)
         {
-            return Ok(new List<SchoolRegistrationModel>());
+            return Ok(new List<School>());
         }
 
         [Route("NewExamDetails/{User}")]
         [AcceptVerbs("GET", "POST", "PUT", "DELETE")]
         public IHttpActionResult NewExamDetails(string User)
         {
-            return Ok(new NewTestModel());
+            return Ok(new TestModel());
         }
     }
 }

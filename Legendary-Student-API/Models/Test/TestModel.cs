@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 
-namespace Legendary_Student_API.Models.TestModels
+namespace Legendary_Student_API.Models.Test
 {
     public class TestModel
     {
@@ -19,7 +19,7 @@ namespace Legendary_Student_API.Models.TestModels
         public int EachQuestionWeightage { get; set; }
         public int TestTotalMarks { get; set; }
 
-        public Dictionary<int, QuestionPairModel> Question { get; set; }
+        public Dictionary<int, Questions> Question { get; set; }
         public DateTime TestDate { get; set; }
     }
     public enum TestType

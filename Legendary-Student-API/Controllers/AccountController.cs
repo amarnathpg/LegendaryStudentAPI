@@ -23,7 +23,7 @@ namespace Legendary_Student_API.Controllers
         // POST api/Account/Register
         [AllowAnonymous]
         [Route("Register")]
-        public async Task<IHttpActionResult> Register(UserModel userModel)
+        public async Task<IHttpActionResult> Register(User userModel)
         {
             if (!ModelState.IsValid)
             {

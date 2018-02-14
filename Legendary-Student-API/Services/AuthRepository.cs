@@ -21,7 +21,7 @@ namespace Legendary_Student_API.Services
             _userManager = new UserManager<IdentityUser>(new UserStore<IdentityUser>(_ctx));
         }
 
-        public async Task<IdentityResult> RegisterUser(UserModel userModel)
+        public async Task<IdentityResult> RegisterUser(User userModel)
         {
             IdentityUser user = new IdentityUser
             {
