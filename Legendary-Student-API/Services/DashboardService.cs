@@ -7,5 +7,6 @@ namespace Legendary_Student_API.Services
 {
     public class DashboardService
     {
+
     }
 }

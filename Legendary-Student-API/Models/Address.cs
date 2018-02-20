@@ -12,7 +12,7 @@ namespace Legendary_Student_API.Models
     {
         [Key]
         [Column(Order = 1)]
-        public int ID { get; set; }
+        public int AddressID { get; set; }
 
         [Required]
         public string AddressValue { get; set; }
@@ -28,5 +28,8 @@ namespace Legendary_Student_API.Models
 
         [Required]
         public string PostalCode { get; set; }
+
+        [Timestamp]
+        public byte[] RowVersion { get; set; }
     }
 }

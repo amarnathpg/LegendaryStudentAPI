@@ -9,7 +9,7 @@ namespace Legendary_Student_API
     public class AuthContext : IdentityDbContext<IdentityUser>
     {
         public AuthContext()
-            : base("AuthContext")
+            : base("StudentContext")
         {
 
         }

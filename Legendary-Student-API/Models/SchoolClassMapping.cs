@@ -6,11 +6,12 @@ using System.Web;
 
 namespace Legendary_Student_API.Models
 {
-    [Table("tblClassMaster")]
-    public class Class
+    [Table("tblSchoolClassMappings")]
+    public class SchoolClassMapping
     {
+        public int SchoolID { get; set; }
+        public virtual School School { get; set; }
         public int ClassID { get; set; }
-
-        public int ClassNumber { get; set; }
+        public virtual Class Class { get; set; }
     }
 }

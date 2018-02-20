@@ -9,7 +9,7 @@ namespace Legendary_Student_API.Models.Test
     {
         public OnlineTest()
         {
-            Question = new Dictionary<int, Questions>();
+            Question = new Dictionary<int, Question>();
         }
     }
 }

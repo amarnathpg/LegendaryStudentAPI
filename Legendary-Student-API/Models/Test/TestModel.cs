@@ -19,7 +19,7 @@ namespace Legendary_Student_API.Models.Test
         public int EachQuestionWeightage { get; set; }
         public int TestTotalMarks { get; set; }
 
-        public Dictionary<int, Questions> Question { get; set; }
+        public Dictionary<int, Question> Question { get; set; }
         public DateTime TestDate { get; set; }
     }
     public enum TestType

@@ -57,6 +57,50 @@ namespace Legendary_Student_API.Controllers
         [AcceptVerbs("GET", "POST", "PUT", "DELETE")]
         public IHttpActionResult GetAllSchools(string User)
         {
+            using (var db = new StudentContext())
+            {
+                var ad = new Address() { AddressValue = "ssd", City = "ssd", Country = "ssd", PostalCode = "ssd", State = "ssd" };
+                //db.Address.Add(ad);
+                //db.SaveChanges();
+                var school = new School()
+                {
+                    Address = ad,
+                   
+                    Code = "1234",
+                    CreatedDateTime = DateTime.Now,
+                    ModifiedDateTime=DateTime.Now,
+                    Email = "sda@gmail.com",
+                    MobileNumber = "2334233423",
+                    Name = "asdd",
+                    Password = "dfdsdf"
+                };
+                db.Schools.Add(school);
+                db.SaveChanges();
+                var clas = new Class()
+                {
+                    //SchoolID = 1,
+                    ClassNumber = 2,
+                    //School = school
+                };
+                db.Class.Add(clas);
+                db.SaveChanges();
+                var blog = new Student()
+                {
+                    CreatedDateTime = DateTime.Now,
+                    Email = "dfdsddfd@gmil.com",
+                    FatherName = "dsssfd",
+                    LastName = "dssfdf",
+                    MobileNumber = "2334233423",
+                    Password = "dfdwsdf",
+                    ModifiedDateTime=DateTime.Now,
+                    Class = clas,
+                    FirstName = "sdfw",
+                    Address = ad
+                };
+                
+                db.Students.Add(blog);
+                db.SaveChanges();
+            }
             return Ok(new List<School>());
         }
 
