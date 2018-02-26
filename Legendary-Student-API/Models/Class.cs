@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
@@ -11,6 +12,7 @@ namespace Legendary_Student_API.Models
     {
         public int ClassID { get; set; }
 
+        [Range(typeof(Int32),"1","12")]
         public int ClassNumber { get; set; }
     }
 }

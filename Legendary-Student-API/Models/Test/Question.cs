@@ -10,17 +10,23 @@ namespace Legendary_Student_API.Models.Test
     [Table("tblQuestions")]
     public class Question
     {
+        public Question()
+        {
+            lstOption = new HashSet<Option>();
+        }
+
         [Key]
         public int QuestionID { get; set; }
-        public int SubjectID { get; set; }
-        public virtual Subject Subject { get; set; }
+        public int ClassID { get; set; }
+        public virtual Class Class { get; set; }
         public string QuestionCode { get; set; }
         public string QuestionName { get; set; }
         public string QuestionDescription { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
         public bool IsActive { get; set; }
-        public ICollection<Option> Options { get; set; }
-        public virtual Answer Answer { get; set; }
+
+        public ICollection<Option> lstOption { get; set; }
+
     }
 }

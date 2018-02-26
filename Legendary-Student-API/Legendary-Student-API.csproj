@@ -228,8 +228,9 @@
   <ItemGroup>
     <Compile Include="App_Start\AuthConfig.cs" />
     <Compile Include="App_Start\WebApiConfig.cs" />
-    <Compile Include="AuthContext.cs" />
+    <Compile Include="Data\AuthContext.cs" />
     <Compile Include="Controllers\AccountController.cs" />
+    <Compile Include="Controllers\AdminController.cs" />
     <Compile Include="Controllers\DashboardController.cs" />
     <Compile Include="Controllers\OrdersController.cs" />
     <Compile Include="Controllers\TestController.cs" />
@@ -243,7 +244,7 @@
     <Compile Include="Models\Helper\DataModel.cs" />
     <Compile Include="Models\Login.cs" />
     <Compile Include="Models\SchoolClassMapping.cs" />
-    <Compile Include="Models\Test\Answer.cs" />
+    <Compile Include="Models\SubjectClassMapping.cs" />
     <Compile Include="Models\Test\Concept.cs" />
     <Compile Include="Models\Test\MockTest.cs" />
     <Compile Include="Models\Test\NewTest.cs" />
@@ -262,11 +263,12 @@
     <Compile Include="Providers\SimpleAuthorizationServerProvider.cs" />
     <Compile Include="Services\AuthRepository.cs" />
     <Compile Include="Services\DashboardService.cs" />
+    <Compile Include="Services\ProfessorService.cs" />
     <Compile Include="Services\SchoolService.cs" />
     <Compile Include="Services\StudentService.cs" />
     <Compile Include="Services\TestService.cs" />
     <Compile Include="Startup.cs" />
-    <Compile Include="StudentContext.cs" />
+    <Compile Include="Data\StudentContext.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="favicon.ico" />
