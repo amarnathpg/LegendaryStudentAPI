@@ -12,21 +12,24 @@ namespace Legendary_Student_API.Models.Test
     {
         public Question()
         {
-            lstOption = new HashSet<Option>();
+            Options = new HashSet<Option>();
         }
 
         [Key]
         public int QuestionID { get; set; }
         public int ClassID { get; set; }
         public virtual Class Class { get; set; }
-        public string QuestionCode { get; set; }
+        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 5)]
+        [DataType(DataType.Text)]
         public string QuestionName { get; set; }
-        public string QuestionDescription { get; set; }
+        [StringLength(50, ErrorMessage = "The {0} must be at least {2} characters long.", MinimumLength = 5)]
+        [DataType(DataType.Text)]
+        public string Description { get; set; }
         public DateTime CreatedDate { get; set; }
         public DateTime ModifiedDate { get; set; }
         public bool IsActive { get; set; }
 
-        public ICollection<Option> lstOption { get; set; }
+        public ICollection<Option> Options { get; set; }
 
     }
 }

@@ -298,7 +298,7 @@ namespace Legendary_Student_API.Controllers
                     {
                         HttpStatusCode = System.Net.HttpStatusCode.OK,
                         Exception = null,
-                        Data = professorService.AddQuestionOptionByClassIDSubjectIDConceptID(question, question.lstOption.ToList(), ConceptID, SubjectID, ClassID)
+                        Data = professorService.AddQuestionOptionByClassIDSubjectIDConceptID(question, question.Options.ToList(), ConceptID, SubjectID, ClassID)
                     });
                 }
                 else
