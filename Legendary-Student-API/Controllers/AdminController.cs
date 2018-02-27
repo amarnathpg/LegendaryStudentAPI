@@ -86,7 +86,7 @@ namespace Legendary_Student_API.Controllers
                     {
                         HttpStatusCode = System.Net.HttpStatusCode.OK,
                         Exception = null,
-                        Data = professorService.AddSubject(subject, ClassID)
+                        Data = professorService.AddOrUpdateSubject(subject, ClassID)
                     });
                 }
                 else
@@ -112,7 +112,7 @@ namespace Legendary_Student_API.Controllers
                     {
                         HttpStatusCode = System.Net.HttpStatusCode.OK,
                         Exception = null,
-                        Data = professorService.UpdateSubject(subject.SubjectID)
+                        Data = professorService.AddOrUpdateSubject(subject)
                     });
                 }
                 else
@@ -126,9 +126,9 @@ namespace Legendary_Student_API.Controllers
             }
         }
 
-        [Route("DeleteSubject/{SubjectID:int}")]
+        [Route("DeleteSubject")]
         [HttpDelete]
-        public IHttpActionResult DeleteSubject([FromUri]int SubjectID)
+        public IHttpActionResult DeleteSubject([FromBody]Subject subject)
         {
             try
             {
@@ -138,7 +138,7 @@ namespace Legendary_Student_API.Controllers
                     {
                         HttpStatusCode = System.Net.HttpStatusCode.OK,
                         Exception = null,
-                        Data = professorService.DeleteSubject(SubjectID)
+                        Data = professorService.AddOrUpdateSubject(subject)
                     });
                 }
                 else
@@ -164,7 +164,7 @@ namespace Legendary_Student_API.Controllers
                     {
                         HttpStatusCode = System.Net.HttpStatusCode.OK,
                         Exception = null,
-                        Data = professorService.GetAllSubjectsByClass(ClassID)
+                        Data = professorService.GetAllSubjects(ClassID)
                     });
                 }
                 else
@@ -192,7 +192,7 @@ namespace Legendary_Student_API.Controllers
                     {
                         HttpStatusCode = System.Net.HttpStatusCode.OK,
                         Exception = null,
-                        Data = professorService.AddConcept(concept, SubjectID, ClassID)
+                        Data = professorService.AddOrUpdateConcept(concept, SubjectID, ClassID)
                     });
                 }
                 else
@@ -218,7 +218,7 @@ namespace Legendary_Student_API.Controllers
                     {
                         HttpStatusCode = System.Net.HttpStatusCode.OK,
                         Exception = null,
-                        Data = professorService.UpdateConcept(concept)
+                        Data = professorService.AddOrUpdateConcept(concept)
                     });
                 }
                 else
@@ -232,9 +232,9 @@ namespace Legendary_Student_API.Controllers
             }
         }
 
-        [Route("DeleteConcept/{ConceptID:int}")]
+        [Route("DeleteConcept")]
         [HttpPost]
-        public IHttpActionResult DeleteConcept([FromUri]int ConceptID)
+        public IHttpActionResult DeleteConcept([FromBody]Concept concept)
         {
             try
             {
@@ -244,7 +244,7 @@ namespace Legendary_Student_API.Controllers
                     {
                         HttpStatusCode = System.Net.HttpStatusCode.OK,
                         Exception = null,
-                        Data = professorService.DeleteConcept(ConceptID)
+                        Data = professorService.AddOrUpdateConcept(concept)
                     });
                 }
                 else
@@ -270,7 +270,7 @@ namespace Legendary_Student_API.Controllers
                     {
                         HttpStatusCode = System.Net.HttpStatusCode.OK,
                         Exception = null,
-                        Data = professorService.GetAllConceptsBySubjectIDClassID(ClassID, SubjectID)
+                        Data = professorService.GetAllConcepts(ClassID, SubjectID)
                     });
                 }
                 else
@@ -286,7 +286,7 @@ namespace Legendary_Student_API.Controllers
         #endregion
 
         #region Question
-        [Route("AddQuestion/{ClassID:int}/{SubjectID:int}/{ConceptID:int}")]
+        [Route("PostQuestion/{ClassID:int}/{SubjectID:int}/{ConceptID:int}")]
         [HttpPost]
         public IHttpActionResult AddQuestion([FromUri]int ClassID, [FromUri]int SubjectID, [FromUri]int ConceptID, [FromBody]Question question)
         {
@@ -298,7 +298,7 @@ namespace Legendary_Student_API.Controllers
                     {
                         HttpStatusCode = System.Net.HttpStatusCode.OK,
                         Exception = null,
-                        Data = professorService.AddQuestionOptionByClassIDSubjectIDConceptID(question, question.Options.ToList(), ConceptID, SubjectID, ClassID)
+                        Data = professorService.AddOrUpdateQuestion(question, ConceptID, SubjectID, ClassID)
                     });
                 }
                 else
@@ -310,13 +310,6 @@ namespace Legendary_Student_API.Controllers
             {
                 return InternalServerError(ex);
             }
-            //Question question = new Question() { QuestionName = QuestionName, CreatedDate = DateTime.Now, ModifiedDate = DateTime.Now, IsActive = true };
-            //List<Option> lstOpt = new List<Option>();
-            //lstOption.ForEach(x =>
-            //{
-            //    lstOpt.Add(x);
-            //});
-            //return Ok(new DataModel() { HttpStatusCode = System.Net.HttpStatusCode.OK, Exception = null, Data = professorService.AddQuestionOptionByClassIDSubjectIDConceptID(question, lstOpt, ConceptID, SubjectID, ClassID) });
         }
 
         [Route("UpdateQuestion")]
@@ -331,7 +324,7 @@ namespace Legendary_Student_API.Controllers
                     {
                         HttpStatusCode = System.Net.HttpStatusCode.OK,
                         Exception = null,
-                        Data = professorService.UpdateQuestion(question)
+                        Data = professorService.AddOrUpdateQuestion(question)
                     });
                 }
                 else
@@ -345,9 +338,9 @@ namespace Legendary_Student_API.Controllers
             }
         }
 
-        [Route("DeleteQuestion/{QuestionID:int}")]
+        [Route("DeleteQuestion")]
         [HttpPost]
-        public IHttpActionResult DeleteQuestion([FromUri]int QuestionID)
+        public IHttpActionResult DeleteQuestion([FromBody]Question question)
         {
             try
             {
@@ -357,7 +350,7 @@ namespace Legendary_Student_API.Controllers
                     {
                         HttpStatusCode = System.Net.HttpStatusCode.OK,
                         Exception = null,
-                        Data = professorService.DeleteQuestion(QuestionID)
+                        Data = professorService.AddOrUpdateQuestion(question)
                     });
                 }
                 else

@@ -65,10 +65,6 @@ namespace Legendary_Student_API.Models
         [Column("IsActive", Order = 10)]
         public bool IsActive { get; set; }
 
-        [Column("RowVersion", Order = 11)]
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
-
         public ICollection<Class> Class { get; set; }
 
     }

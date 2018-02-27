@@ -84,9 +84,5 @@ namespace Legendary_Student_API.Models
         public bool IsActive { get; set; }
 
         public ICollection<Subject> Subjects { get; set; }
-
-        [Column("RowVersion", Order = 14)]
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
     }
 }

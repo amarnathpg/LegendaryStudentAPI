@@ -28,8 +28,5 @@ namespace Legendary_Student_API.Models
 
         [Required]
         public string PostalCode { get; set; }
-
-        [Timestamp]
-        public byte[] RowVersion { get; set; }
     }
 }

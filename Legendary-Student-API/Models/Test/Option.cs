@@ -15,10 +15,8 @@ namespace Legendary_Student_API.Models.Test
 
         public int QuestionID { get; set; }
         public virtual Question Question { get; set; }
-
-        public string OptionCode { get; set; }
         public string OptionName { get; set; }
-        public string OptionDescription { get; set; }
+        public string Description { get; set; }
 
         public bool IsAnswer { get; set; }
     }

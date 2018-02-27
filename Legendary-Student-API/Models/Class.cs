@@ -14,5 +14,8 @@ namespace Legendary_Student_API.Models
 
         [Range(typeof(Int32),"1","12")]
         public int ClassNumber { get; set; }
+
+        public int SchoolID { get; set; }
+        public virtual School Schools { get; set; }
     }
 }
