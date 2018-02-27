@@ -153,7 +153,7 @@ namespace Legendary_Student_API.Controllers
         }
 
         [Route("GetAllSubjects/{ClassID:int}")]
-        [HttpPost]
+        [HttpGet]
         public IHttpActionResult GetAllSubjects([FromUri]int ClassID)
         {
             try
@@ -207,7 +207,7 @@ namespace Legendary_Student_API.Controllers
         }
 
         [Route("UpdateConcept")]
-        [HttpPost]
+        [HttpPut]
         public IHttpActionResult UpdateConcept([FromBody]Concept concept)
         {
             try
@@ -233,7 +233,7 @@ namespace Legendary_Student_API.Controllers
         }
 
         [Route("DeleteConcept")]
-        [HttpPost]
+        [HttpDelete]
         public IHttpActionResult DeleteConcept([FromBody]Concept concept)
         {
             try
@@ -259,7 +259,7 @@ namespace Legendary_Student_API.Controllers
         }
 
         [Route("GetAllConcepts/{ClassID:int}/{SubjectID:int}/")]
-        [HttpPost]
+        [HttpGet]
         public IHttpActionResult GetAllConcepts([FromUri]int ClassID, [FromUri]int SubjectID)
         {
             try
@@ -313,7 +313,7 @@ namespace Legendary_Student_API.Controllers
         }
 
         [Route("UpdateQuestion")]
-        [HttpPost]
+        [HttpPut]
         public IHttpActionResult UpdateQuestion([FromBody]Question question)
         {
             try
@@ -339,7 +339,7 @@ namespace Legendary_Student_API.Controllers
         }
 
         [Route("DeleteQuestion")]
-        [HttpPost]
+        [HttpDelete]
         public IHttpActionResult DeleteQuestion([FromBody]Question question)
         {
             try
@@ -365,7 +365,7 @@ namespace Legendary_Student_API.Controllers
         }
 
         [Route("GetAllQuestions/{ClassID:int}/{SubjectID:int}/{ConceptID:int}")]
-        [HttpPost]
+        [HttpGet]
         public IHttpActionResult GetAllQuestions([FromUri]int ClassID, [FromUri]int SubjectID, [FromUri]int ConceptID)
         {
             try

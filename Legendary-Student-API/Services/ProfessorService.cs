@@ -39,9 +39,12 @@ namespace Legendary_Student_API.Services
             bool returnValue = false;
             using (var db = new StudentContext())
             {
-                SubjectClassMapping subjectClassMapping = new SubjectClassMapping() { ClassID = ClassID, SubjectID = subject.SubjectID };
                 db.Entry(subject).State = subject.SubjectID == 0 ? EntityState.Added : EntityState.Modified;
-                db.Entry(subjectClassMapping).State = subjectClassMapping.ID == 0 ? EntityState.Added : EntityState.Modified;
+                if (db.Entry(subject).State == EntityState.Added)
+                {
+                    SubjectClassMapping subjectClassMapping = new SubjectClassMapping() { ClassID = ClassID, SubjectID = subject.SubjectID };
+                    db.Entry(subjectClassMapping).State = subjectClassMapping.ID == 0 ? EntityState.Added : EntityState.Modified;
+                }
                 returnValue = db.SaveChanges() > 0;
             }
             return returnValue;
@@ -64,11 +67,13 @@ namespace Legendary_Student_API.Services
         public bool AddOrUpdateConcept(Concept concept, int SubjectID = 0, int ClassID = 0)
         {
             using (var db = new StudentContext())
-            {
-                concept.SubjectID = SubjectID;
-                ConceptClassMapping conceptClassMapping = new ConceptClassMapping() { ClassID = ClassID, ConceptID = concept.ConceptID };
+            {                
                 db.Entry(concept).State = concept.ConceptID == 0 ? EntityState.Added : EntityState.Modified;
-                db.Entry(conceptClassMapping).State = conceptClassMapping.ID == 0 ? EntityState.Added : EntityState.Modified;
+                if (db.Entry(concept).State == EntityState.Added)
+                {
+                    ConceptClassMapping conceptClassMapping = new ConceptClassMapping() { ClassID = ClassID, ConceptID = concept.ConceptID };
+                    db.Entry(conceptClassMapping).State = conceptClassMapping.ID == 0 ? EntityState.Added : EntityState.Modified;
+                }
                 db.SaveChanges();
             }
             return true;
@@ -79,7 +84,7 @@ namespace Legendary_Student_API.Services
             using (var db = new StudentContext())
             {
                 lstConcept = (from conceptclass in db.ConceptClassMappings
-                              join concept in db.Concepts.Where(x => x.SubjectID == SubjectID).ToList() on conceptclass.ConceptID equals concept.ConceptID
+                              join concept in db.Concepts.Where(x => x.SubjectID == SubjectID) on conceptclass.ConceptID equals concept.ConceptID
                               where conceptclass.ClassID.Equals(ClassID) && concept.IsActive.Equals(true)
                               select concept).ToList<Concept>();
             }
@@ -93,6 +98,8 @@ namespace Legendary_Student_API.Services
             using (var db = new StudentContext())
             {
                 db.Entry(question).State = question.QuestionID == 0 ? EntityState.Added : EntityState.Modified;
+                if (db.Entry(question).State == EntityState.Modified)
+                    question.Options.ToList().ForEach(x=> db.Entry(x).State = EntityState.Modified);
                 db.SaveChanges();
             }
             return true;
@@ -103,7 +110,7 @@ namespace Legendary_Student_API.Services
             List<Option> lstOption = new List<Option>();
             using (var db = new StudentContext())
             {
-                lstQuestion = db.Questions.Include(db.Options.ToString()).ToList();
+                lstQuestion = db.Questions.Include(o=>o.Options).ToList();
             }
             return lstQuestion;
         }
